@@ -32,7 +32,7 @@ try {
 		$manager = \AsasVirtuaisWP\WCAddCustomer\Manager::instance();
 
 		// Check for WooCommerce being active
-		if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			$manager->admin_warning( __( 'The plugin "WC Add Customer" needs the plugin WooCommerce to be active in order to work.', 'wc-add-customer' ) );
 			return;
 		}
@@ -49,9 +49,10 @@ try {
 
 				// Another try catch
 				try {
+					$manager = \AsasVirtuaisWP\WCAddCustomer\Manager::instance();
 
 					// Prepare the modifications to user-new.php via multiple hooks
-					( new \AsasVirtuaisWP\WCAddCustomer\CustomerProfile( $this ) )
+					( new \AsasVirtuaisWP\WCAddCustomer\CustomerProfile( $manager ) )
 					->init_hooks()
 					->set_default_role()
 					->enqueue_wc_assets();
@@ -67,7 +68,8 @@ try {
 					do_action( 'asas\wc_add_customer\restore_role' );
 
 					// Warn admin
-					\AsasVirtuaisWP\WCAddCustomer\Manager::instance()->admin_error_from_exception( $th );
+					echo __( 'An error occured', 'wc-add-customer' );
+					echo '<pre>' . $manager->get_error_details( $th ) . '</pre>';
 				}
 			}, 2 );
 		} );
