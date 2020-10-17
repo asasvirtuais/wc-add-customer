@@ -1,0 +1,1 @@
+This is a very simple plugin for Wordpress websites that use WooCommerce, it adds the page "Add Customer" to admin dashboard under the User menu with a form to quickly register WooCommerce customers.
