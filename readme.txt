@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: icaro-capobianco
+Contributors: icarocapobianco
 Tags: woocommerce, customer
 Requires at least: 5.0.0
 Tested up to: 5.5
