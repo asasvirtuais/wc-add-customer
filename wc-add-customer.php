@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name:       Add Customer in Dashboard
- * Plugin URI:        https://icaro-dev.pory.app/
  * Description:       Adds the page "Add Customer" to admin dashboard under the User menu with a form to quickly register WooCommerce customers
  * Version:           1.0.0
  * Author:            Ícaro C. Capobianco
